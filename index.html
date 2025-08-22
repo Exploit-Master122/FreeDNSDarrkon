@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darrkon</title>
+
+ 
+    <!-- Load da TypeScript Wombat and Particles -->
+ <script type="module" src="./particleConfig.js"></script>
+ 
+  
+  
+  <!-- LOADER STYLES -->
+  <style>
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a1a1a 0%, #120000 100%);
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      text-align: center;
+      transition: opacity 1s ease;
+    }
+
+    .loading-bar {
+      width: 80%;
+      height: 6px;
+      background: #003f7f; /* DARKER BLUE */
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .loading-progress {
+      width: 0%;
+      height: 100%;
+      background: #007fff;
+      transition: width 0.2s ease;
+    }
+
+    body.loaded .loading-screen {
+      opacity: 0;
+      pointer-events: none;
+      display: none !important;
+    }
+  </style>
+</head>
+
+<!-- LOADER AT THE VERY TOP... -->
+<div class="loading-screen" id="loadingScreen">
+  <div id="loadingQuote">Loading...</div>
+  <div class="loading-bar">
+    <div id="loadingProgress" class="loading-progress"></div>
+  </div>
+</div>
+<body>
+  
+
+  <!-- AUTH -->
+  <div class="auth-container" id="authContainer">
+    <div class="header">Password Protected</div>
+    <input type="text" id="usernameInput" placeholder="Enter Username" />
+    <input type="password" id="passwordInput" placeholder="Enter Password" />
+    <button class="btn" onclick="checkPassword()">Login</button>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="topbar" id="topbar" style="display: none;">
+    <button class="tabBtn active" onclick="showTab('homeTab', this)">Home</button>
+    <button class="tabBtn" onclick="showTab('gamesTab', this)">Links</button>
+    <button class="tabBtn" onclick="showTab('browserTab', this)">Browser</button>
+    <button class="tabBtn" onclick="showTab('cloakTab', this)">Cloak</button>
+    <button class="tabBtn" onclick="showTab('toolsTab', this)">Tools/Coding</button>
+    <button class="tabBtn" onclick="showTab('moviesTab', this)">Apps/Stuff</button>
+    <button class="tabBtn" onclick="showTab('educationTab', this)">Education</button>
+    <button class="tabBtn" onclick="showTab('settingsTab', this)">Settings</button>
+    <button class="tabBtn" onclick="showTab('gamesLaunchTab', this)">More Games</button>
+    <button class="tabBtn" onclick="showTab('infocreditsTab', this)">Info</button>
+    <button class="tabBtn" onclick="showTab('musicLaunchTab', this)">Music</button>
+  </div>
+
+  <!-- HOME TAB -->
+  <div class="tab-content active" id="homeTab">
+    <div class="container">
+      <div class="header">Darrkon</div>
+      <div class="subheader">Where shadows browse in peace! =-)</div>
+    </div>
+  </div>
+
+  <!-- CLOAK TAB -->
+  <div class="tab-content" id="cloakTab">
+    <div class="container">
+      <div class="header">Cloaking</div>
+      <button class="btn" onclick="window.open('https://github.com/Exploit-Master122/DarrkonOS/blob/main/index.html ', '_blank')">D0WNL0@D File...</button>
+      <button class="btn" onclick="window.open('https://thelearningcentral.global.ssl.fastly.net/math.html?u=/szvy/szvy/hvtrs8%2F-dwcidwcigm.aoo', '_blank')">Szvy Duckduckgo...</button>
+      <button class="btn" onclick="window.open('https://github.com/Exploit-Master122/Darrkonv6/blob/main/readme4.md ', '_blank')">Make Your Own Darrkon Link!</button>
+      <button class="btn" onclick="window.open('https://github.com/Exploit-Master122/Launcher/blob/main/index.html ', '_blank')">About:blank Launch</button>
+    </div>
+  </div>
+
+  <!-- BROWSER TAB -->
+  <div class="tab-content" id="browserTab">
+    <div class="container">
+      <div class="header">Unblocked Browser!</div>
+      <input type="text" id="urlInput" placeholder="Enter URL or Search Qwant/WebCrawl3r" />
+      <div class="btn-container">
+        <button class="btn" onclick="launchProxy('iframe')">IframeVault</button>
+        <button class="btn" onclick="launchProxy('rammerhead')">Selectorv2</button>
+        <button class="btn" onclick="launchProxy('ultraviolet')">Ultraviolet</button>
+        <button class="btn" onclick="launchDataCloak()">Data Cloak</button>
+        <button class="btn" onclick="launchKahoot()">Szvy Loader</button>
+        <button class="btn" onclick="toggleFullscreen('movieFrame')">Fullscreen</button>
+      </div>
+      <div id="movieFrameContainer" style="margin-top: 20px; width: 100%;">
+        <iframe id="movieFrame" style="width: 100%; height: 60vh; border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAMES/LINKS TAB -->
+  <div class="tab-content" id="gamesTab">
+    <div class="container" style="max-height: 80vh; overflow-y: auto;">
+      <div class="header">Games/Proxy links!</div>
+      <ul>
+        <li><a href="https://us4-z.global.ssl.fastly.net/ " target="_blank">US4 Proxy Z</a></li>
+        <li><a href="https://us4-v.global.ssl.fastly.net/ " target="_blank">US4 Proxy V</a></li>
+        <li><a href="https://cesium.insviro.com/ " target="_blank">Cesium Browser</a></li>
+        <li><a href="https://writingessayepicguide.lol/en_US/ " target="_blank">Nebula Browser</a></li>
+        <li><a href="https://msr25s-8080.csb.app/ " target="_blank">Nebula (Alt)</a></li>
+        <li><a href="https://travel.kigurun.ru/ " target="_blank">DayDreamX</a></li>
+        <li><a href="https://pcbtnghvzx.elliott.ca/ " target="_blank">UniUb 1</a></li>
+        <li><a href="https://ogiqbptdki.joemullins.info/ " target="_blank">UniUb 2</a></li>
+        <li><a href="https://z-proxy.github.io/Z-Kit/home.html " target="_blank">Z-Kit WORKING!!</a></li>
+        <li><a href="https://maths.onl/ " target="_blank">UniUB WORKING!!</a></li>
+        <li><a href="https://void.ubyis.org/ " target="_blank">Void Network</a></li>
+        <li><a href="https://ubgusa.com/ " target="_blank">America’s Unbl*cker</a></li>
+        <li><a href="https://vans.webconstructions.co.uk/ " target="_blank">CloudBurst Proxy</a></li>
+        <li><a href="https://thirteenfortysix-l5lnm.ondigitalocean.app/ " target="_blank">1346.lol WORKING!!</a></li>
+        <li><a href="https://englishwork4school.mka.in/ " target="_blank">SVY Central</a></li>
+        <li><a href="https://oil.radicalnetworks.org/ " target="_blank">Emerald</a></li>
+        <li><a href="https://hexcein-moonsters.github.io/polytrack/ " target="_blank">PolyTrack Unblocked...</a></li>
+        <li><a href="https://www.hoodamath.com/games/run.html#gsc.tab=0" target="_blank">Unblocked Games!</a></li>
+        <li><a href=" https://github.com/Exploit-Master122/Vex1 " target="_blank">Vex1 Games!!(Working!!)</a></li>
+        <li><a href="https://exploit-master122.github.io/Nyx-/active/ " target="_blank">Nyx Proxy (by ChompyPotato)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TOOLS TAB -->
+  <div class="tab-content" id="toolsTab">
+    <div class="container">
+      <div class="header">Proxy Tools</div>
+      <button class="btn" onclick="window.open('https://repos.ecosyste.ms/hosts/GitHub/owners/Exploit-Master122  ', '_blank')">My project/Coding</button>
+      <button class="btn" onclick="window.open('https://github.com/Exploit-Master122/Ext-remover  ', '_blank')">ExtRemover2</button>
+      <button class="btn" onclick="window.open('https://github.com/Exploit-Master122/RandomUnblockers/  ', '_blank')">Exploit Library</button>
+      <button class="btn" onclick="window.open('https://exploit-master122.github.io/Helios-AI/  ', '_blank')">Qwen.AI</button>
+      <button class="btn" onclick="window.open('devtools://devtools/bundled/inspector.html')">DevTools Chrome</button>
+      <button class="btn" onclick="window.open('https://docs.titaniumnetwork.org/ ')">Titanium Network</button>
+    </div>
+  </div>
+
+  <!-- MOVIES TAB -->
+  <div class="tab-content" id="moviesTab">
+    <div class="container">
+      <div class="header">We have way too many apps...</div>
+      <div class="btn-container">
+        <button class="btn" onclick="loadMovieSite('https://watch.vidora.su ')">Vidora Entertainment(Best Movies)</button>
+        <button class="btn" onclick="loadMovieSite('https://www.secured.wiki/embed/moviess.html ')">SecuredWeb TV (Proxied!!)</button>
+        <button class="btn" onclick="loadMovieSite('https://schoolwork.broomleigh.org/mastery?auth=q3hcgrv')">VidStream TV</button>
+        <button class="btn" onclick="loadMovieSite(' https://movies.waves.lat ')">Waves Encrypted Movies</button>
+        <button class="btn" onclick="loadMovieSite('https://9anime.org.lv/ ')">9Anime Unblocked</button>
+        <button class="btn" onclick="loadMovieSite('https://pluto.tv/ ')">Pluto Television...</button>
+        <button class="btn" onclick="loadMovieSite('https://dogeub-v4-snowy.vercel.app/mastery?auth=uf7ceml')">Discord Web</button>
+        <button class="btn" onclick="loadMovieSite(' https://hoodagames.com/ ')">HoodaGames</button>
+        <button class="btn" onclick="loadMovieSite('https://blooket.broomleigh.org/mastery?auth=8w5ungp')">Roblox Browser</button>
+        <button class="btn" onclick="loadMovieSite(' https://www.freemathhelp.com/ ')">MathHelp Unblocked</button>
+        <button class="btn" onclick="loadMovieSite('https://caveduck.io/ ')">Character.AI</button>
+        <button class="btn" onclick="loadMovieSite('https://chat.qwen.ai/ ')">ChatGPT</button>
+        <button class="btn" onclick="loadMovieSite('https://ext-remover.net/ ')">Ext-Remover</button>
+        <button class="btn" onclick="loadMovieSite('https://edpuzzle.com.de/math.html?u=/szvy/szvy/hvtrs8%2F-pna%7B.eedopcgnmw%2Ccmm-mcln%2F')">Geforce Now</button>
+        <button class="btn" onclick="loadMovieSite(' https://stim.io/ ')">Stim.io</button>
+        <button class="btn" onclick="loadMovieSite('https://schoolwork.broomleigh.org/mastery?auth=mqijnem')">TikTok Shorts</button>
+        <button class="btn" onclick="loadMovieSite(' https://calculus.fasoclash.com/&?q=Geforce%20Now')">Space Browser</button>
+        <button class="btn" onclick="loadMovieSite(' https://classroom6x-plus.github.io/new/ ')">Clasroom6x</button>
+        <button class="btn" onclick="loadMovieSite('https://history.rest/math.html?u=/szvy/szvy/hvtrs8%2F-cnowd%2Cbmoqtgrmif.aoo%2Fcuvh-rggksvep')">Boosteroid Cloud Gaming</button>
+        <button class="btn" onclick="loadMovieSite('https://app.flamepass.com/ ')">Flampass.App</button>
+        <button class="btn" onclick="loadMovieSite('https://1games.io/ ')">1Games.io (REALLY GOOD)</button>
+        <button class="btn" onclick="loadMovieSite('https://drivemad.com ')">DriveMad.Com</button>
+        <button class="btn" onclick="loadMovieSite('https://dogeub-v4-snowy.vercel.app/mastery?auth=hwp2d19 ')">Crazygames</button>
+        <button class="btn" onclick="loadMovieSite('https://exploit-master122.github.io/DarrkonOS/ ')">Double Cloaking (Really Good)</button>
+        <button class="btn" onclick="loadMovieSite('https://exploit-master122.github.io/Launcher/ ')">TRIPLE Cloaking (Really Good)</button>
+        <button class="btn" onclick="loadMovieSite('https://exploit-master122.github.io/FridayNightFunkinv2/ ')">Friday Night Funkin' UPDATED</button>
+        <button class="btn" onclick="loadMovieSite('https://advanced-orchestra.site/ ')">US4 Browser</button>
+        <button class="btn" onclick="loadMovieSite('https://exploit-master122.github.io/Schoolwork7thgrade/ ')">Link Generator(Really Good)</button>
+        <button class="btn" onclick="loadMovieSite('https://1v1.lol')">Ultrakill Cloud</button>
+        <button class="btn" onclick="loadMovieSite('https://jblaha.art/sketchbook/')">Sketchbook Sandbox</button>
+        <button class="btn" onclick="loadMovieSite('https://sandboxels.r74n.com/')">Sandboxels Experiments</button>
+        <button class="btn" onclick="loadMovieSite('https://sandboxels.r74n.com/')"></button>
+        <button class="btn" onclick="toggleFullscreen('movieFrameMovies')">Fullscreen(Click me! 🙃)</button>
+      </div>
+      <div id="movieFrameContainerMovies" style="margin-top: 20px; width: 100%;">
+        <iframe id="movieFrameMovies" style="width: 100%; height: 60vh; border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION TAB -->
+  <div class="tab-content" id="educationTab">
+    <div class="container">
+      <div class="header">Education Sites</div>
+      <div class="btn-container">
+        <a href="https://edgedcircles.com/uv/service/hvtrs8%2F-dg.sumrc.aoo%2F " target="_blank">Quora via Ultraviolet</a><br>
+        <a href="https://physicsforidiots.com/ " target="_blank">Physics For Idiots</a><br>
+        <a href="https://www.mathway.com/Algebra " target="_blank">Mathway (Algebra)</a><br>
+        <a href="https://www.mathnook.com/ " target="_blank">MathNook</a><br>
+        <a href="https://archive.org/ " target="_blank">Internet Archive</a><br>
+        <a href="https://en.readanybook.com/ " target="_blank">ReadAnyBook.com</a><br>
+        <a href="https://en.onread.com/ " target="_blank">OnRead.com</a><br>
+      </div>
+      <p>Educational websites that are blocked at my school,but are very good.Some sites like Quora are cloaked through proxies. If the site is blocked, try it in the browser tab.</p>
+    </div>
+  </div>
+
+  <!-- MORE GAMES TAB -->
+  <div class="tab-content" id="gamesLaunchTab">
+    <div class="container">
+      <div class="header">Launch the Games!!</div>
+      <div class="btn-container">
+        <a href="https://unblocked-games.s3.amazonaws.com/index.html  ">Nova Online Play</a><br>
+        <a href="https://exploit-master122.github.io/fractions4kids/  ">SZ Games</a><br>
+        <a href="https://exploit-master122.github.io/Time-Shooter-3/  ">Time Shooter 3</a><br>
+        <a href="https://www.crazygames.nl/  ">Crazygames (Dutch)</a><br>
+        <a href="https://exploit-master122.github.io/vex7/  ">Stickman Vex 7</a><br>
+        <a href="https://exploit-master122.github.io/vex8/  ">Stickman Vex 8</a><br>
+        <a href="https://exploit-master122.github.io/minecraft-1-8/  ">Minecraft 1.8</a><br>
+        <a href="https://dinguschan-owo.github.io/dingusproxy/  ">DingusProxy v3</a><br>
+        <a href="https://1games.io/  ">ALL GAMES (Which is a LOT,1games.io Engine)</a><br>
+        <a href="https://dogeub-v4-snowy.vercel.app/mastery?auth=bt0fgtq  ">More...GAMES SparkGames.XYZ Engine,Doge Ultraviolet.</a><br>
+      </div>
+      <p>If the links are blocked, put them in the browser.The games work best in About:blank. Fullscreen will be implemented soon, don't worry. The Now.gg Roblox may not work; try a few times.There are many more games in Apps,too! </p>
+    </div>
+  </div>
+
+  <!-- INFO TAB -->
+  <div class="tab-content" id="infocreditsTab">
+    <div class="container">
+      <div class="header">Info/Contact</div>
+      <a href="https://github.com/Exploit-Master122/Credits... " target="_blank">Credits!</a><br>
+      <a href="https://darrkonad-5o93omd93-exploit-master12s-projects.vercel.app/ " target="_blank">Contact Us / What we do</a><br>
+      <a href="https://www.paypal.com/ncp/payment/46U6QHC6AKRVU " target="_blank">Donate to Darrkon Network</a><br>
+      <a href="https://explioitsbio.vercel.app/ " target="_blank">Main Developer's Bio</a><br>
+      <a href="https://www.patreon.com/c/DarrkonNetwork " target="_blank">Buy/Donate Darrkon v7</a><br>
+      <a href="https://github.com/Exploit-Master122/LegalPolicy/ " target="_blank">Legal Policy</a><br>
+    </div>
+  </div>
+
+  <!-- MUSIC TAB -->
+  <div class="tab-content" id="musicLaunchTab">
+    <div class="container">
+      <div class="header">Listen to music unblocked 🎶</div>
+      <div class="btn-container">
+        <button class="btn" onclick="window.open('https://exploit-master122.github.io/AcoraV2/ ', '_blank')">Acora v2</button>
+        <button class="btn" onclick="alert('Go to https://shorturl.at/r37Qz')">FreeFy Music</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div class="tab-content" id="settingsTab">
+    <div class="container">
+      <div class="header">Settings 🔧</div>
+      <div class="btn-container">
+        <button class="btn" onclick="clearAuth()">Log out</button>
+        <button class="btn" onclick="resetAll()">Delete Search Data</button>
+        <button class="btn" onclick="wtfisthis()">Bypass Mode</button>
+        <button class="btn" onclick="uwuwegotdaurl()">Panic Button</button>
+      </div>
+
+      <div class="header" style="margin-top: 20px;">Quick Cloaking</div>
+      <div class="btn-container">
+        <button class="btn" onclick="setCloakTitle('Google Docs')"><img class="favicon" src="https://www.google.com/favicon.ico"/>Google Docs</button>
+        <button class="btn" onclick="setCloakTitle('Classroom')"><img class="favicon" src="https://ssl.gstatic.com/classroom/favicon.png"/>Classroom</button>
+        <button class="btn" onclick="setCloakTitle('Home')"><img class="favicon" src="https://schoolwork.broomleigh.org/assets/img/docs.webp"/>Home</button>
+        <button class="btn" onclick="setCloakTitle('New Tab')"><img class="favicon" src="https://raw.githubusercontent.com/chromium/chromium/main/chrome/app/theme/default_200_percent/common/favicon_ntp.png"/>New Tab</button>
+        <button class="btn" onclick="setCloakTitle('Aeries Login')"><img class="favicon" src="https://castrovalleyusd.asp.aeries.net/student/images/Combomark_Transparent.svg"/>Aeries Login</button>
+        <button class="btn" onclick="setCloakTitle('CPM Math')"><img class="favicon" src="https://sso.cpm.org/images/CPMCompact.svg"/>CPM Math</button>
+        <h0.1> HTML Launcher File: <a href="https://exploit-master122.github.io/Launcher/" target="_blank">Launch About:blank</a> </h0.1>
+      </div>
+
+      <div class="header" style="margin-top: 20px;">Customize Look</div>
+      <div class="btn-container">
+        <button class="btn" onclick="toggleParticles()">Toggle Particles</button>
+        <button class="btn" onclick="setTheme('bubblegum')">Bubblegum</button>
+        <button class="btn" onclick="setTheme('darknight')">Dark Night</button>
+        <button class="btn" onclick="setTheme('ocean')">Ocean</button>
+        <button class="btn" onclick="setTheme('blueskies')">Blue Skies</button>
+        <button class="btn" onclick="setTheme('default')">Default Theme</button>
+      </div>
+
+      <div class="header" style="margin-top: 20px;">Proxy Selection</div>
+      <div class="proxy-selector">
+        <label class="proxy-option">
+          <input type="radio" name="proxySelector" value="framevault" class="proxy-radio" checked>
+          <div class="proxy-info">
+            <div class="proxy-label">Darrkon FrameVault</div>
+            <div class="proxy-desc">Advanced Iframe loading.Good for shady websites like florr.io,more encrypted.(Simple use)</div>
+          </div>
+        </label>
+        <label class="proxy-option">
+          <input type="radio" name="proxySelector" value="rammerhead" class="proxy-radio">
+          <div class="proxy-info">
+            <div class="proxy-label">Rammerhead (Simon Cheng)</div>
+            <div class="proxy-desc">Uses Rammerhead proxy engine.Good for websites like GeForce Now or Discord.(Good browser)</div>
+          </div>
+        </label>
+        <label class="proxy-option">
+          <input type="radio" name="proxySelector" value="ultraviolet" class="proxy-radio">
+          <div class="proxy-info">
+            <div class="proxy-label">Ultraviolet (Jaydon Lui)</div>
+            <div class="proxy-desc">Uses JS Serviceworkers.Good for websites like poki.com or chatgpt.(Very Good,but Temperamental) </div>
+          </div>
+        </label>
+        <label class="proxy-option">
+          <input type="radio" name="proxySelector" value="helios" class="proxy-radio">
+          <div class="proxy-info">
+            <div class="proxy-label">Helios Browser</div>
+            <div class="proxy-desc">Powered by DingusChan from Github,CORS Proxy Method.(A rival to Rammerhead)</div>
+          </div>
+        </label>
+        <label class="proxy-option">
+          <input type="radio" name="proxySelector" value="shadow" class="proxy-radio">
+          <div class="proxy-info">
+            <div class="proxy-label">ShadowOS(https://shai.tecnova.com.br/)</div>
+            <div class="proxy-desc">A better-looking version of Helios,and functional with Ultraviolet...Turn off popups for the link.</div>
+          </div>
+        </label>
+        <label class="proxy-option">
+          <input type="radio" name="proxySelector" value="wombatserver" class="proxy-radio">
+          <div class="proxy-info">
+            <div class="proxy-label">WOMGNIX</div>
+            <div class="proxy-desc">Also made by Simon Cheng,a proxy built for websites like bloxd.io or Github.Wombat and NGNIX server.</div>
+          </div>
+        </label>
+        <label class="proxy-option">
+          <input type="radio" name="proxySelector" value="scramjet" class="proxy-radio" disabled>
+          <div class="proxy-info">
+            <div class="proxy-label">ScramJet</div>
+            <div class="proxy-desc">Currently in development...</div>
+          </div>
+        </label>
+      </div>
+
+      <div class="header" style="margin-top: 20px;">Search Engine</div>
+      <div class="btn-container">
+        <button class="btn" onclick="setSearchEngine('SearXGerman')">SearXNG (German) Web</button>
+        <button class="btn" onclick="setSearchEngine('NormalGoogle')">Google</button>
+        <button class="btn" onclick="setSearchEngine('Swisscows')">SwissCows</button>
+        <button class="btn" onclick="setSearchEngine('Duckduckgo')">Duckduckgo (Proxied)</button>
+      </div>
+
+      <div class="header" style="margin-top: 20px;">Custom Background</div>
+      <input type="text" id="customBgUrl" placeholder="Enter an Image or GIF URL." />
+      <button class="btn" onclick="setCustomBackground()">Install Theme</button>
+
+      <p style="margin-top: 20px;">Join the Discord for more links, updates, web dev, and more!<br><a href="https://discord.gg/fWcUWqCy " target="_blank">Launch Discord</a></p>
+      <p>Press Ctrl+Q and it will redirect you to Google Classroom.<br>Bypass mode is always on—it enables the leave site popup. <br>To toggle Panic Button, read https://shorturl.at/AsmCf <br> To search,set the proxy to iframe. </p>
+    </div>
+  </div>
+
+  <!-- MAIN STYLES -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto Mono", monospace;
+    }
+
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1a1a1a 0%, #120000 100%);
+      color: #e0e0e0;
+      height: 100vh;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    .topbar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: linear-gradient(90deg, #330000, #660000);
+      box-shadow: 0 0 20px #ff0000cc;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+      gap: 6px;
+      border-bottom: 2px solid #ff1a1a;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .topbar button {
+      background: transparent;
+      border: 2px solid #ff1a1a;
+      color: #ff4d4d;
+      font-size: 16px;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ff1a1a44 inset;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .topbar button:hover,
+    .topbar button.active {
+      background: #ff1a1a;
+      color: #1a0000;
+      box-shadow: 0 0 20px #ff4d4d;
+      border-color: #ff4d4d;
+      transform: scale(1.05);
+    }
+
+    .tab-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .container, .auth-container {
+      background: #2a0000;
+      padding: 36px 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px #ff1a1acc;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      border: 2px solid #ff4d4d;
+      user-select: text;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      margin: 24px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      background: #3f0000;
+      color: #ffcccc;
+      box-shadow: inset 0 0 8px #ff1a1a99;
+      transition: background 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      background: #510000;
+      box-shadow: 0 0 12px #ff1a1aee;
+      color: #fff;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid #ff1a1a;
+      color: #ff4d4d;
+      padding: 12px 28px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px #ff1a1a44 inset;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: #ff1a1a;
+      color: #330000;
+      box-shadow: 0 0 25px #ff4d4d;
+      transform: scale(1.08);
+    }
+
+    .header {
+      font-size: 28px;
+      margin-bottom: 14px;
+      color: #ff3333;
+      text-shadow: 0 0 8px #ff0000;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+
+    .subheader {
+      font-size: 16px;
+      color: #ff9999cc;
+      margin-bottom: 24px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    iframe {
+      width: 100%;
+      height: 60vh;
+      margin-top: 24px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff1a1abb;
+      background-color: #1a0000;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      max-width: 600px;
+      margin: 10px auto 0 auto;
+      text-align: left;
+    }
+
+    ul li a {
+      color: #ff4d4d;
+      text-decoration: none;
+      display: block;
+      padding: 8px 0;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      border-bottom: 1px solid #330000;
+    }
+
+    ul li a:hover {
+      color: #ff9999;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .btn-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      iframe {
+        height: 60vh;
+      }
+      .topbar {
+        justify-content: center;
+      }
+    }
+
+    .favicon {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    .proxy-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .proxy-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #3f0000;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .proxy-option:hover {
+      background: #510000;
+    }
+
+    .proxy-label {
+      font-size: 15px;
+      color: #ffcccc;
+    }
+
+    .proxy-desc {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .proxy-radio {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ff4d4d;
+      border-radius: 50%;
+      background-color: transparent;
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+
+    .proxy-radio:checked::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #ff4d4d;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+    }
+  </style>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"/>
+
+<!-- SCRIPTS -->
+<script>
+  const quotes = [
+    "Watch Brooklyn Nine Nine, It's a really good comedy...",
+    "Vplaza Gaming Sux...",
+    "Long live Szvy's account!",
+    "I'm playing War Thunder",
+    "Velara Proxy sucks,too...",
+    "Darrkon Network Rules!",
+    "The Pendragon Series by D.J. MacHale is GOOD",
+    "I am a minor!",
+    "Bully Stephen, he whacked me with his tennis racket!!",
+    "You're welcome for the money. You owe me. (You know who you are...) =-0",
+    "I'm tracking your IP address... No really,I am!!",
+    "I'm in Titanium Network!",
+    "Red Browser by LupineVault is really good",
+    "Microsoft Edge Sucks AS-",
+    "Are you using Safari Browser? USE CHROME",
+    "Stop Doomscrolling Tiktok on my website...Scroll on youtube shorts!!",
+    "I have partnered with Doge Unblocker",
+    "Press Control+h",
+    "Imagine Rickrolling in the Big 25... NEVER GONNA",
+    "The roblox grind is crazy...",
+    "Swisscows search engine...But no google somehow.",
+    "Let's go, Jaydon Lui!! Thank you!!",
+    "If you search up freaky stuff on here, you will get 'BANNED' from the discord.",
+    "All of the people who helped me on this, you know who you are, THANK YOU!!",
+    "Jobi, a partner from Universal Unblocker made a version called FREAKY-UB. WHY?!",
+    "I like minors...Because I AM A MINOR (GET OUTT) No,I'm serious!! =-D", // This line is crazy freaky
+    "Too many sayings...",
+    "This took a lot of time to make...",
+    "Why are you on this site? Go and touch grass.",
+    "TOUCH GRASS!!",
+    "Deadshot.io is terrible. Rooftop snipers is better (Haha...)",
+    "I need to practice advanced proportions...",
+    "Need to visit the Hub. GITHUB. WHAT WERE YOU THINKING?!",
+    "Qwen.AI is better than ChatGPT.",
+    "I wrote an essay called The Flaw in the System. I'm releasing it soon,it's fire.",
+    "Is space waves really that good?",
+    "Axiom Browser is coming!! (In 2028 lol)",
+    "Yo seach up rubbing hands gif :D",
+    "Is now.gg overrated? Prob. BUT YOU CAN PLAY IT HERE! (Easyfun.gg Sucks...)",
+    "The kids at my school are crazy. But seriously, I love you guys... Thanks for all the support, you know who you are!!"
+  ];
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const loadingQuote = document.getElementById("loadingQuote");
+    const loadingProgress = document.getElementById("loadingProgress");
+
+    const quoteIndex = Math.floor(Math.random() * quotes.length);
+    loadingQuote.textContent = quotes[quoteIndex];
+
+    const duration = Math.floor(Math.random() * 2000) + 4000;
+    let progress = 0;
+    const interval = 50;
+    const totalSteps = duration / interval;
+
+    function updateProgress() {
+      if (progress >= 100) return;
+      progress += 100 / totalSteps;
+      loadingProgress.style.width = `${Math.min(progress, 100)}%`;
+      setTimeout(updateProgress, interval);
+    }
+
+    updateProgress();
+
+    setTimeout(() => {
+      document.body.classList.add("loaded");
+    }, duration);
+  });
+
+  const searchEngines = {
+    SearXGerman: 'https://uvv2.rhw.one/active/uv/service/hvtrs8%2F-pcungm.ko-',
+    NormalGoogle: 'https://www.google.com/?safe=active&ssui=on/search?q=',
+    Swisscows: 'https://swisscows.com/en?query=',
+    Duckduckgo: 'https://womginx.arph.org/main/https://start.duckduckgo.com/'
+  };
+
+  let currentEngine = localStorage.getItem("searchEngine") || "SearXGerman";
+
+  function setSearchEngine(engine) {
+    localStorage.setItem("searchEngine", engine);
+    alert("Your Search engine is now: " + engine);
+  }
+
+  function launchProxy() {
+    const url = document.getElementById('urlInput').value.trim();
+    const iframe = document.getElementById('movieFrame');
+    const selectedProxy = document.querySelector('input[name="proxySelector"]:checked')?.value || 'framevault';
+
+    switch (selectedProxy) {
+      case 'framevault':
+        iframe.src = url.startsWith('http') ? url : searchEngines[currentEngine] + encodeURIComponent(url);
+        break;
+      case 'rammerhead':
+        iframe.src = "https://108.181.32.77.nip.io/";
+        break;
+        case 'helios':
+        iframe.src = "https://exploit-master122.github.io/Helios-v2/";
+        break;
+         case 'shadow':
+        iframe.src = "https://shai.tecnova.com.br/";
+        break;
+        case 'wombatserver':
+        iframe.src = "https://womginx.arph.org/";
+        break;
+        case 'ultraviolet':
+        iframe.src = "https://uvv2.rhw.one/active/";
+        break;
+      default:
+        alert("Selected proxy is not available.");
+        break;
+    }
+
+    localStorage.setItem("selectedProxy", selectedProxy);
+  }
+
+  function setCustomBackground() {
+    const url = document.getElementById('customBgUrl').value.trim();
+    if (url) {
+      document.body.style.backgroundImage = `url('${url}')`;
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundPosition = "center";
+      localStorage.setItem("customBgUrl", url);
+    } else {
+      alert("Please enter a valid image URL.");
+    }
+  }
+
+  function clearAuth() {
+    localStorage.removeItem("username");
+    document.getElementById('authContainer').style.display = 'block';
+    document.getElementById('topbar').style.display = 'none';
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('usernameInput').value = '';
+  }
+
+  function resetAll() {
+    localStorage.clear();
+    location.reload();
+  }
+
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+    document.querySelectorAll('.tabBtn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleFullscreen(elementId) {
+    const el = document.getElementById(elementId);
+    if (!document.fullscreenElement) {
+      el.requestFullscreen().catch(err => alert(`Error attempting to enable full-screen: ${err.message}`));
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  function checkPassword() {
+    const pw = document.getElementById('passwordInput').value;
+    if (pw === '5084820933') {
+      localStorage.setItem("username", document.getElementById('usernameInput').value);
+      document.getElementById('authContainer').style.display = 'none';
+      document.getElementById('topbar').style.display = 'flex';
+      alert("Data Saved! Successfully Logged in!!");
+    } else {
+      alert('Incorrect password. As a clue, check the source code... If you know how.');
+    }
+  }
+
+  function wtfisthis() {
+    alert("Bypass mode is always on!");
+  }
+
+  function uwuwegotdaurl() {
+    const panicUrl = localStorage.getItem("panicUrl") || 'https://classroom.google.com';
+    window.open(panicUrl, '_blank');
+  }
+
+  function loadMovieSite(url) {
+    document.getElementById('movieFrameMovies').src = url.trim();
+  }
+
+  function launchDataCloak() {
+    alert("Data Cloak feature coming soon!");
+  }
+
+  function launchKahoot() {
+    alert("Go to https://tinyurl.com/szvylauncher. Credits to Szvy.win for this part, follow her on GitHub and Discord! =-D If it does not work, try it in the browser.");
+  }
+
+  let particlesEnabled = true;
+
+  const options = {
+    fpsLimit: 60,
+    interactivity: {
+      detectsOn: "canvas",
+      events: {
+        onHover: { enable: true, mode: "repulse" },
+        onClick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        repulse: { distance: 100, duration: 0.4 },
+        push: { quantity: 4 }
+      }
+    },
+    particles: {
+      color: { value: "#ff1a1a" },
+      links: {
+        color: "#ff0000",
+        distance: 120,
+        enable: true,
+        opacity: 0.5,
+        width: 2
+      },
+      collisions: { enable: true },
+      move: {
+        direction: "none",
+        enable: true,
+        outMode: "bounce",
+        speed: 2
+      },
+      number: { density: { enable: true, area: 800 }, value: 50 },
+      opacity: { value: 0.6 },
+      shape: { type: "circle" },
+      size: { random: true, value: 5 }
+    },
+    detectRetina: true
+  };
+
+  tsParticles.load("tsparticles", options);
+
+  function setTheme(theme) {
+    switch (theme) {
+      case 'bubblegum': document.body.style.background = "linear-gradient(to right, pink, hotpink)"; break;
+      case 'darknight': document.body.style.background = "#000"; break;
+      case 'ocean': document.body.style.background = "linear-gradient(to right, darkblue, navy)"; break;
+      case 'blueskies': document.body.style.background = "linear-gradient(to right, skyblue, lightblue)"; break;
+      default: document.body.style.background = "linear-gradient(135deg, #1a1a1a 0%, #120000 100%)"; break;
+    }
+  }
+
+  function toggleParticles() {
+    particlesEnabled = !particlesEnabled;
+    if (!particlesEnabled) tsParticles.stop();
+    else tsParticles.start("tsparticles", options);
+  }
+
+  function setCloakTitle(title) {
+    document.title = title;
+    localStorage.setItem("cloakedTitle", title);
+    const btn = Array.from(document.querySelectorAll(".btn")).find(b => b.innerText.includes(title));
+    if (btn) {
+      const img = btn.querySelector("img");
+      if (img) localStorage.setItem("cloakedFavicon", img.src);
+    }
+    alert("Tab title set to: " + title);
+  }
+
+  window.addEventListener("load", () => {
+    const savedTitle = localStorage.getItem("cloakedTitle");
+    const savedFavicon = localStorage.getItem("cloakedFavicon");
+    if (savedTitle) document.title = savedTitle;
+
+    document.querySelectorAll('.btn').forEach(btn => {
+      const title = btn.innerText.replace(/<[^>]*>?/g, '').trim();
+      const img = btn.querySelector("img");
+      if (img && savedTitle && title === savedTitle) {
+        btn.innerHTML = `<img class="favicon" src="${savedFavicon}"/>${savedTitle}`;
+      }
+    });
+
+    const savedProxy = localStorage.getItem("selectedProxy") || "framevault";
+    try {
+      document.querySelector(`input[value="${savedProxy}"]`).checked = true;
+    } catch (e) {
+      document.querySelector('input[value="framevault"]').checked = true;
+    }
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === 'q') {
+      window.open(localStorage.getItem("panicUrl") || 'https://classroom.google.com', '_blank');
+    }
+    if (event.key === '`') {
+      window.open(localStorage.getItem("panicUrl") || 'https://classroom.google.com', '_blank');
+    }
+  });
+
+  window.addEventListener('beforeunload', function(e) {
+    e.preventDefault();
+    e.returnValue = 'Changes you made may not be saved.';
+  });
+</script>
